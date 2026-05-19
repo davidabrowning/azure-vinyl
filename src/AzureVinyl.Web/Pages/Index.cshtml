@@ -6,5 +6,11 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core and CI/CD</a>.</p>
+    <h2>Records</h2>
+    <ul>
+        @foreach (var vinyl in Model.Vinyls)
+        {
+            <li>@vinyl.Title by @vinyl.Artist</li>
+        }
+    </ul>
 </div>
