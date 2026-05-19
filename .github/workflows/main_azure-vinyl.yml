@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'azure-vinyl'
           slot-name: 'Production'
-          package: .
+          package: ./.net-app
           
