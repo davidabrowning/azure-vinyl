@@ -8,17 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-    var connection = new SqlConnection(connectionString);
-    connection.AccessToken = new DefaultAzureCredential()
-        .GetToken(
-            new Azure.Core.TokenRequestContext(
-                new[] { "https://database.windows.net/.default" }
-            )
-        ).Token;
-        
-    options.UseSqlServer(connection);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
