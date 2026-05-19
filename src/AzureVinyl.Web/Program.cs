@@ -1,4 +1,5 @@
-using System.Security.AccessControl;
+using Azure.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     var connection = new SqlConnection(connectionString);
     connection.AccessToken = new DefaultAzureCredential()
         .GetToken(
-            new AuthorizationRule.Core.TokenRequestContext(
+            new Azure.Core.TokenRequestContext(
                 new[] { "https://database.windows.net/.default" }
             )
         ).Token;
