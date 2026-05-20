@@ -16,7 +16,7 @@ public class UnitTest1
     }
 
         [Fact]
-    public void FailingTest()
+    public void FixedFailingTest()
     {
         // Arrange
         int result;
@@ -25,6 +25,6 @@ public class UnitTest1
         result = 1 + 1;
 
         // Assert
-        Assert.Equal(3, result);
+        Assert.Equal(2, result);
     }
 }
