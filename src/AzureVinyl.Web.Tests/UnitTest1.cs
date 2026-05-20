@@ -14,4 +14,17 @@ public class UnitTest1
         // Assert
         Assert.Equal(2, result);
     }
+
+        [Fact]
+    public void FailingTest()
+    {
+        // Arrange
+        int result;
+
+        // Act
+        result = 1 + 1;
+
+        // Assert
+        Assert.Equal(3, result);
+    }
 }
