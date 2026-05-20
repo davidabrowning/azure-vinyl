@@ -8,8 +8,7 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly AppDbContext _dbContext;
     private readonly HttpClient _httpClient;
-    public List<Vinyl> Vinyls = new List<Vinyl>();
-    public string VinylTestResult = string.Empty;
+    public List<Vinyl> Vinyls = new();
 
     public IndexModel(ILogger<IndexModel> logger, AppDbContext dbContext, HttpClient httpClient)
     {
@@ -20,7 +19,6 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        Vinyls = _dbContext.Vinyls.ToList();
-        VinylTestResult = _httpClient.GetStringAsync("http://localhost:5067/api/vinyls").Result;
+        Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>("http://localhost:5067/api/vinyls").Result;
     }
 }
