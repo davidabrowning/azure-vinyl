@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AzureVinyl.Core\AzureVinyl.Core.csproj" />
+  </ItemGroup>
+
 </Project>
