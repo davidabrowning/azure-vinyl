@@ -17,6 +17,13 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>("http://localhost:5067/api/vinyls").Result;
+        try
+        {
+            Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>("http://localhost:5067/api/vinyls").Result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while fetching vinyls.");
+        }
     }
 }
