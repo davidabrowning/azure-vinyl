@@ -6,12 +6,14 @@ namespace AzureVinyl.Web.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
+    private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
     public List<Vinyl> Vinyls = new();
 
-    public IndexModel(ILogger<IndexModel> logger, HttpClient httpClient)
+    public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration, HttpClient httpClient)
     {
         _logger = logger;
+        _configuration = configuration;
         _httpClient = httpClient;
     }
 
@@ -19,7 +21,8 @@ public class IndexModel : PageModel
     {
         try
         {
-            Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>("http://localhost:5067/api/vinyls").Result;
+            string baseApiUrl = _configuration["ApiSettings:BaseUrl"];
+            Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>(baseApiUrl + "/api/vinyls").Result;
         }
         catch (Exception ex)
         {
