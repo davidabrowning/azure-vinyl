@@ -11,7 +11,16 @@ app.UseHttpsRedirection();
 
 app.MapGet("/api/vinyls", (AppDbContext appDbContext) =>
 {
-    return appDbContext.Vinyls.ToList();
+    List<Vinyl> vinyls = appDbContext.Vinyls.ToList();
+    Vinyl extraVinyl = new Vinyl
+    {
+        Id = -1,
+        Artist = "ABBA",
+        Title = "Waterloo",
+        Year = 1974
+    };
+    vinyls.Add(extraVinyl);
+    return vinyls;
 });
 
 app.Run();
