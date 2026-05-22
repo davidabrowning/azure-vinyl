@@ -8,6 +8,7 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
+    public string EnvironmentName { get; set; } = string.Empty;
     public List<Vinyl> Vinyls = new();
 
     public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration, HttpClient httpClient)
@@ -19,6 +20,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+        EnvironmentName = _configuration["EnvironmentName"];
         try
         {
             string baseApiUrl = _configuration["ApiSettings:BaseUrl"];
