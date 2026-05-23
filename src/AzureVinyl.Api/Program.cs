@@ -30,4 +30,19 @@ app.MapPost("/api/vinyls", (AppDbContext appDbContext, Vinyl vinyl) =>
     return Results.Created($"/api/vinyls/{vinyl.Id}", vinyl);
 });
 
+app.MapPut("/api/vinyls/{id}", async (int id, Vinyl vinylInput, AppDbContext appDbContext) =>
+{
+    var vinylToUpdate = await appDbContext.Vinyls.FindAsync(id);
+
+    if (vinylToUpdate is null)
+        return Results.NotFound();
+
+    vinylToUpdate.Title = vinylInput.Title;
+    vinylToUpdate.Artist = vinylInput.Artist;
+
+    await appDbContext.SaveChangesAsync();
+
+    return Results.Ok(vinylToUpdate);
+});
+
 app.Run();
