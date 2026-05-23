@@ -10,6 +10,7 @@ namespace AzureVinyl.Web.Pages
         private readonly HttpClient _httpClient;
         [BindProperty]
         public Vinyl Vinyl { get; set; } = new();
+        public string EnvironmentName { get; set; } = string.Empty;
 
         public CreateModel(ILogger<IndexModel> logger, IConfiguration configuration, HttpClient httpClient)
         {
@@ -20,6 +21,7 @@ namespace AzureVinyl.Web.Pages
 
         public void OnGet()
         {
+            EnvironmentName = _configuration["EnvironmentName"];
         }
 
         public IActionResult OnPost()
