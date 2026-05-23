@@ -13,14 +13,18 @@ public class ErrorModel : PageModel
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
     private readonly ILogger<ErrorModel> _logger;
+    private readonly IConfiguration _configuration;
+    public string EnvironmentName { get; set; } = string.Empty;
 
-    public ErrorModel(ILogger<ErrorModel> logger)
+    public ErrorModel(ILogger<ErrorModel> logger, IConfiguration configuration)
     {
         _logger = logger;
+        _configuration = configuration;
     }
 
     public void OnGet()
     {
+        EnvironmentName = _configuration["EnvironmentName"];
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
     }
 }

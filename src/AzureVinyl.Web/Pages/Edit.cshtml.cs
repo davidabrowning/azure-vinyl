@@ -10,6 +10,7 @@ namespace AzureVinyl.Web.Pages
         private readonly HttpClient _httpClient;
         [BindProperty]
         public Vinyl Vinyl { get; set; } = null!;
+        public string EnvironmentName { get; set; } = string.Empty;
 
         public EditModel(ILogger<IndexModel> logger, IConfiguration configuration, HttpClient httpClient)
         {
@@ -20,6 +21,7 @@ namespace AzureVinyl.Web.Pages
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            EnvironmentName = _configuration["EnvironmentName"];
             try
             {
                 string baseApiUrl = _configuration["ApiSettings:BaseUrl"];

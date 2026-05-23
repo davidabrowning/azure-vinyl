@@ -2,9 +2,8 @@
 @model EditModel
 @{
     ViewData["Title"] = "Edit";
+    ViewData["EnvironmentName"] = Model.EnvironmentName;
 }
-
-<h2>Edit Vinyl</h2>
 
 <form method="post">
     <input type="hidden" asp-for="Vinyl.Id" />

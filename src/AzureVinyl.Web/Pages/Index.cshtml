@@ -2,12 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    ViewData["EnvironmentName"] = Model.EnvironmentName;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h2>Records with a fixed failing test</h2>
-    <p>Environment: @Model.EnvironmentName</p>
     <div class="container">
         <div class="row">
             @foreach (Vinyl vinyl in Model.Vinyls)
