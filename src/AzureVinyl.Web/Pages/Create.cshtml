@@ -1,0 +1,33 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Vinyl</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Title</label>
+        <input asp-for="Vinyl.Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Artist</label>
+        <input asp-for="Vinyl.Artist" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Year</label>
+        <input asp-for="Vinyl.Year" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Album art url</label>
+        <input asp-for="Vinyl.AlbumArtUrl" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+</form>
