@@ -47,4 +47,17 @@ app.MapPut("/api/vinyls/{id}", async (int id, Vinyl vinylInput, AppDbContext app
     return Results.Ok(vinylToUpdate);
 });
 
+app.MapDelete("/api/vinyls/{id}", async (int id, AppDbContext appDbContext) =>
+{
+    var vinyl = await appDbContext.Vinyls.FindAsync(id);
+
+    if (vinyl is null)
+        return Results.NotFound();
+
+    appDbContext.Vinyls.Remove(vinyl);
+    await appDbContext.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
 app.Run();

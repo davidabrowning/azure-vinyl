@@ -63,5 +63,28 @@ namespace AzureVinyl.Web.Pages
 
             return RedirectToPage("Index");
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            try
+            {
+                string baseApiUrl = _configuration["ApiSettings:BaseUrl"];
+
+                var response = await _httpClient.DeleteAsync($"{baseApiUrl}/api/vinyls/{id}");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    _logger.LogError("Error deleting vinyl.");
+                    return Page();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting vinyl.");
+                return Page();
+            }
+
+            return RedirectToPage("Index");
+        }
     }
 }
