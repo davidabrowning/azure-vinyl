@@ -13,10 +13,12 @@
             @foreach (Vinyl vinyl in Model.Vinyls)
             {
                 vinyl.AlbumArtUrl = "https://upload.wikimedia.org/wikipedia/en/2/26/Daft_Punk_-_Random_Access_Memories.png";
-                <div class="col-md-3">
-                    <img src="@vinyl.AlbumArtUrl" alt="@vinyl.Title" class="img-fluid" />
-                    <p>@vinyl.Title - @vinyl.Artist (@vinyl.Year)</p>
-                </div>
+                <a href="/Edit/@vinyl.Id">
+                    <div class="col-md-3">
+                        <img src="@vinyl.AlbumArtUrl" alt="@vinyl.Title" class="img-fluid" />
+                        <p>@vinyl.Title - @vinyl.Artist (@vinyl.Year)</p>
+                    </div>
+                </a>
             }
         </div>
     </div>

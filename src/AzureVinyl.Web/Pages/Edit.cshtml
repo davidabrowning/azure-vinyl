@@ -1,0 +1,33 @@
+﻿@page
+@model EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Vinyl</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Vinyl.Id" />
+
+    <div>
+        <label asp-for="Vinyl.Title"></label>
+        <input asp-for="Vinyl.Title" />
+    </div>
+
+    <div>
+        <label asp-for="Vinyl.Artist"></label>
+        <input asp-for="Vinyl.Artist" />
+    </div>
+
+    <div>
+        <label asp-for="Vinyl.Year"></label>
+        <input asp-for="Vinyl.Year" />
+    </div>
+
+    <div>
+        <label asp-for="Vinyl.AlbumArtUrl"></label>
+        <input asp-for="Vinyl.AlbumArtUrl" />
+    </div>
+
+    <button type="submit">Save</button>
+</form>
