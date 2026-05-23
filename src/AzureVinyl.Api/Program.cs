@@ -39,6 +39,8 @@ app.MapPut("/api/vinyls/{id}", async (int id, Vinyl vinylInput, AppDbContext app
 
     vinylToUpdate.Title = vinylInput.Title;
     vinylToUpdate.Artist = vinylInput.Artist;
+    vinylToUpdate.Year = vinylInput.Year;
+    vinylToUpdate.AlbumArtUrl = vinylInput.AlbumArtUrl;
 
     await appDbContext.SaveChangesAsync();
 
