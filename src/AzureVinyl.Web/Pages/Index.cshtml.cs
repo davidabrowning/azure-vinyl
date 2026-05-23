@@ -25,6 +25,7 @@ public class IndexModel : PageModel
         {
             string baseApiUrl = _configuration["ApiSettings:BaseUrl"];
             Vinyls = _httpClient.GetFromJsonAsync<List<Vinyl>>(baseApiUrl + "/api/vinyls").Result;
+            Vinyls = Vinyls.OrderByDescending(v => Guid.NewGuid()).ToList();
         }
         catch (Exception ex)
         {
