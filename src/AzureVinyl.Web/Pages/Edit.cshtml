@@ -8,32 +8,32 @@
 <form method="post">
     <input type="hidden" asp-for="Vinyl.Id" />
 
-    <div>
+    <div class="mb-3">
         <label asp-for="Vinyl.Title"></label>
-        <input asp-for="Vinyl.Title" />
+        <input asp-for="Vinyl.Title" class="form-control" />
     </div>
 
-    <div>
+    <div class="mb-3">
         <label asp-for="Vinyl.Artist"></label>
-        <input asp-for="Vinyl.Artist" />
+        <input asp-for="Vinyl.Artist" class="form-control" />
     </div>
 
-    <div>
+    <div class="mb-3">
         <label asp-for="Vinyl.Year"></label>
-        <input asp-for="Vinyl.Year" />
+        <input asp-for="Vinyl.Year" class="form-control" />
     </div>
 
-    <div>
+    <div class="mb-3">
         <label asp-for="Vinyl.AlbumArtUrl"></label>
-        <input asp-for="Vinyl.AlbumArtUrl" />
+        <input asp-for="Vinyl.AlbumArtUrl" class="form-control" />
     </div>
 
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 <form method="post" asp-page-handler="Delete">
     <input type="hidden" asp-for="Vinyl.Id" />
-    <button type="submit">
+    <button type="submit" class="btn btn-danger">
         Delete
     </button>
 </form>
