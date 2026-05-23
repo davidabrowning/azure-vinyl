@@ -15,6 +15,3 @@ docker push containerregistryazurevinyl.azurecr.io/azurevinyl-api:latest
 
 ### Force revision
 az containerapp update --name container-app-azure-vinyl-api --resource-group resource-group-azure-vinyl-dev --image containerregistryazurevinyl.azurecr.io/azurevinyl-api:latest
-
-### Restart container app
-Do this manually in Azure web portal.
