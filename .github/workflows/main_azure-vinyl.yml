@@ -84,6 +84,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FCAEC207CD6F47E9AAAADC9E66399CBA }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2CB94D1235A146C48C0F5487B27B781C }}
 
+      - name: Show Azure context
+        run: az account show
+
       - name: Login to ACR
         run: az acr login --name containerregistryazurevinyl
 
